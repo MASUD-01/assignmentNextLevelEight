@@ -1,5 +1,6 @@
 import express from 'express';
 import { authRoutes } from '../modules/auth/auth.routes';
+import { categoryRoutes } from '../modules/category/category.routes';
 
 const router = express.Router();
 
@@ -8,10 +9,10 @@ const moduleRoutes = [
     path: '/',
     route: authRoutes,
   },
-  // {
-  //   path: '/academic-departments',
-  //   route: academicDepartmentRoutes
-  // },
+  {
+    path: '/categories',
+    route: categoryRoutes,
+  },
   // {
   //   path: '/faculties',
   //   route: facultyRoutes

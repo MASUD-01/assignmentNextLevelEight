@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "categories" ALTER COLUMN "price" DROP NOT NULL,
+ALTER COLUMN "genre" DROP NOT NULL,
+ALTER COLUMN "publicationDate" DROP NOT NULL,
+ALTER COLUMN "categoryId" DROP NOT NULL;

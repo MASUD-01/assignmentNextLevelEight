@@ -27,14 +27,15 @@ model User {
 }
 
 model Category {
-  id              String   @id @default(uuid())
+  id              String    @id @default(uuid())
   title           String
-  price           String
-  genre           String
-  publicationDate DateTime
-  categoryId      String   @default(uuid())
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  price           Float?
+  author          String?
+  genre           String?
+  publicationDate DateTime?
+  categoryId      String?   @default(uuid())
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
 
   @@map("categories")
 }
