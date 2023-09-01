@@ -8,6 +8,15 @@ export type IGenericResponse<T> = {
   };
   data: T;
 };
+export type IGenericResponseMetaData<T> = {
+  meta: {
+    page: number;
+    size: number;
+    total: number;
+    totalPage: number;
+  };
+  data: T;
+};
 
 export type IGenericErrorResponse = {
   statusCode: number;

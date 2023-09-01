@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 import catchAsync from '../../../shared/catchAsync';
+import pick from '../../../shared/pick';
 import sendResponse from '../../../shared/sendResponse';
+import { bookFilterableFields, bookOptionsFields } from './book.constant';
 import { BookService } from './book.service';
 
 const insertDB = catchAsync(async (req: Request, res: Response) => {
@@ -14,7 +16,11 @@ const insertDB = catchAsync(async (req: Request, res: Response) => {
   });
 });
 const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
-  const result = await BookService.getAllFromDB();
+  const filters = pick(req.query, bookFilterableFields);
+  const options = pick(req.query, bookOptionsFields);
+
+  console.log({ filters, options });
+  const result = await BookService.getAllFromDB(filters, options);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -28,6 +34,15 @@ const getDataById = catchAsync(async (req: Request, res: Response) => {
     statusCode: httpStatus.OK,
     success: true,
     message: 'Books retrieved  successfully',
+    data: result,
+  });
+});
+const getBookByCategoryId = catchAsync(async (req: Request, res: Response) => {
+  const result = await BookService.getBookByCategoryId(req.params.id);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Books with associated category data fetched successfully',
     data: result,
   });
 });
@@ -57,4 +72,5 @@ export const BookController = {
   deleteByIdFromDB,
   updateOneInDB,
   getDataById,
+  getBookByCategoryId,
 };

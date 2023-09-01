@@ -4,6 +4,7 @@ import { BookController } from './book.controller';
 const router = express.Router();
 
 router.get('/', BookController.getAllFromDB);
+router.get('/:id/category', BookController.getBookByCategoryId);
 router.get('/:id', BookController.getDataById);
 
 router.post(

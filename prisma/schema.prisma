@@ -26,25 +26,27 @@ model User {
   @@map("users")
 }
 
-model Book {
+model Category {
   id    String @id @default(uuid())
   title String
-
-  @@map("books")
-}
-
-model Category {
-  id              String    @id @default(uuid())
-  title           String
-  price           Float?
-  author          String?
-  genre           String?
-  publicationDate DateTime?
-  categoryId      String?   @default(uuid())
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
+  books Book[]
 
   @@map("categories")
+}
+
+model Book {
+  id              String   @id @default(uuid())
+  title           String
+  price           Float
+  author          String
+  genre           String
+  publicationDate String
+  categoryId      String
+  category        Category @relation(fields: [categoryId], references: [id])
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("books")
 }
 
 model ReviewAndRating {
