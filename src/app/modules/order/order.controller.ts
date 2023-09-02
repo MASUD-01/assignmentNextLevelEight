@@ -14,7 +14,16 @@ const insertDB = catchAsync(async (req: Request, res: Response) => {
   });
 });
 const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
-  const result = await OrderService.getAllFromDB();
+  console.log(req.user, '----------user');
+  const result = await OrderService.getAllFromDB(
+    req?.user as {
+      role: string;
+      email: string;
+      id: string;
+      iat: number;
+      exp: number;
+    }
+  );
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,

@@ -8,8 +8,19 @@ const insertDB = async (data: any): Promise<any> => {
 
   return result;
 };
-const getAllFromDB = async (): Promise<Order[]> => {
-  const result = await prisma.order.findMany({});
+const getAllFromDB = async (req: {
+  role: string;
+  email: string;
+  id: string;
+  iat: number;
+  exp: number;
+}): Promise<Order[]> => {
+  const { role, id } = req;
+  console.log(role, id);
+  const result = await prisma.order.findMany({
+    // Specify the type explicitly
+    where: role === 'admin' ? {} : { userId: id },
+  });
 
   return result;
 };

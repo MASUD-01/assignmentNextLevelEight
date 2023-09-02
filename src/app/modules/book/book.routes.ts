@@ -5,23 +5,22 @@ import { BookController } from './book.controller';
 
 const router = express.Router();
 
-router.get('/', auth(ENUM_USER_ROLE.CUSTOMER), BookController.getAllFromDB);
+router.get('/', BookController.getAllFromDB);
 router.get('/:id/category', BookController.getBookByCategoryId);
 router.get('/:id', BookController.getDataById);
 
 router.post(
   '/create-book',
-  // validateRequest(AcademicFacultyValidation.create),
-  // auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.ADMIN),
   BookController.insertDB
 );
 
-router.patch(
+router.patch('/:id', auth(ENUM_USER_ROLE.ADMIN), BookController.updateOneInDB);
+
+router.delete(
   '/:id',
-
-  BookController.updateOneInDB
+  auth(ENUM_USER_ROLE.ADMIN),
+  BookController.deleteByIdFromDB
 );
-
-router.delete('/:id', BookController.deleteByIdFromDB);
 
 export const bookRoutes = router;

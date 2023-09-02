@@ -67,8 +67,9 @@ model ReviewAndRating {
 }
 
 model Order {
-  id     String      @id @default(uuid())
-  userId String      @default(uuid())
+  id     String @id @default(uuid())
+  userId String @default(uuid())
+
   status OrderStatus @default(pending)
 
   createdAt  DateTime @default(now())

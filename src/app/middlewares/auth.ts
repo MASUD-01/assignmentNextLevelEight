@@ -25,6 +25,7 @@ const auth =
       req.user = decodedVerifiedUser; // role  , userid
 
       console.log(decodedVerifiedUser, 'verifiedUser');
+      console.log(requiredRoles, 'requiredRoles');
       // role diye guard korar jnno
       if (
         requiredRoles.length &&

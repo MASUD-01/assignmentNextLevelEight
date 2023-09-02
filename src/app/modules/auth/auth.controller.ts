@@ -13,6 +13,29 @@ const insertAuth = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+const login = catchAsync(async (req: Request, res: Response) => {
+  const result = await AuthService.login(req.body);
+  const { refreshToken, ...others } = result;
+  res.cookie('refreshToken', refreshToken);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'User login successfully',
+    data: result,
+  });
+});
+const refreshToken = catchAsync(async (req: Request, res: Response) => {
+  const { refreshToken } = req.cookies;
+  console.log(refreshToken, 'refreshToken---------====');
+  const result = await AuthService.refreshToken(refreshToken);
+  res.cookie('refreshToken', refreshToken);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'User login successfully',
+    data: result,
+  });
+});
 const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
   const result = await AuthService.getAllFromDB();
   sendResponse(res, {
@@ -27,7 +50,7 @@ const getDataById = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Users retrieved  successfully',
+    message: 'User getched successfully',
     data: result,
   });
 });
@@ -57,4 +80,6 @@ export const AuthController = {
   deleteByIdFromDB,
   updateOneInDB,
   getDataById,
+  login,
+  refreshToken,
 };

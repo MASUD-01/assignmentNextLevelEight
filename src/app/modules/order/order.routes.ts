@@ -1,15 +1,20 @@
 import express from 'express';
+import { ENUM_USER_ROLE } from '../../../enums/user';
+import auth from '../../middlewares/auth';
 import { OrderController } from './order.controller';
 
 const router = express.Router();
 
-router.get('/', OrderController.getAllFromDB);
+router.get(
+  '/',
+  auth(ENUM_USER_ROLE.CUSTOMER, ENUM_USER_ROLE.ADMIN),
+  OrderController.getAllFromDB
+);
 router.get('/:id', OrderController.getDataById);
 
 router.post(
   '/create-order',
-  // validateRequest(AcademicFacultyValidation.create),
-  // auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.CUSTOMER),
   OrderController.insertDB
 );
 
