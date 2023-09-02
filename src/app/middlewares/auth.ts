@@ -15,14 +15,21 @@ const auth =
         throw new ApiError(httpStatus.UNAUTHORIZED, 'You are not authorized');
       }
       // verify token
-      let verifiedUser = null;
+      let decodedVerifiedUser = null;
 
-      verifiedUser = jwtHelpers.verifyToken(token, config.jwt.secret as Secret);
+      decodedVerifiedUser = jwtHelpers.verifyToken(
+        token,
+        config.jwt.secret as Secret
+      );
 
-      req.user = verifiedUser; // role  , userid
+      req.user = decodedVerifiedUser; // role  , userid
 
+      console.log(decodedVerifiedUser, 'verifiedUser');
       // role diye guard korar jnno
-      if (requiredRoles.length && !requiredRoles.includes(verifiedUser.role)) {
+      if (
+        requiredRoles.length &&
+        !requiredRoles.includes(decodedVerifiedUser.role)
+      ) {
         throw new ApiError(httpStatus.FORBIDDEN, 'Forbidden');
       }
       next();

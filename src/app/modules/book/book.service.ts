@@ -25,9 +25,6 @@ const getAllFromDB = async (
 ): Promise<IGenericResponse<Book[]>> => {
   const { limit, page, skip } = paginationHelpers.calculatePagination(options);
   const { search, category, ...filterData } = filters;
-
-  console.log(search, category, filterData);
-
   const andConditions = [];
 
   if (search) {

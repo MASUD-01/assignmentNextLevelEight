@@ -14,16 +14,21 @@ model User {
   id String @id @default(uuid())
 
   name       String
-  email      String   @unique
+  email      String    @unique
   password   String
-  role       String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  role       OrderRole
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
   contactNo  String
   address    String
   profileImg String
 
   @@map("users")
+}
+
+enum OrderRole {
+  admin
+  customer
 }
 
 model Category {
