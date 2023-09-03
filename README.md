@@ -1,21 +1,25 @@
-# University Management Core Service
+User
+https://assignmeteight.vercel.app/api/v1/auth/signup (POST)
+https://assignmeteight.vercel.app/api/v1/users (GET)
+https://assignmeteight.vercel.app/api/v1/users/a2c5b944-1184-40c0-98c8-f8093f3a72c9 (Single GET) Include an id that is saved in your database
+https://assignmeteight.vercel.app/api/v1/users/a2c5b944-1184-40c0-98c8-f8093f3a72c9 (PATCH)
+api/v1/users/a2c5b944-1184-40c0-98c8-f8093f3a72c9 (DELETE) Include an id that is saved in your database
+https://assignmeteight.vercel.app/api/v1/profile (GET)
 
-## Resources
-
-### Stater Repository: 
-[University Management Core Service Starter](https://github.com/Apollo-Level2-Web-Dev/university-management-core-service-starter)
-
-### ER Diagram
-- [Module 35: ER Diagram](https://i.ibb.co/Ln2FttV/university-management-core-service-module-1.png)
-
-- [Module-36: ER Diagram](https://i.ibb.co/tJ4nt6T/Screenshot-2023-08-20-at-7-32-11-PM.png)
-
-- [Module-37: ER Diagram](https://i.ibb.co/DV7Jwd8/university-management-core-service-Page-2-drawio.png)
-
-- [Module-38: ER Diagram](https://i.ibb.co/B2JhHD3/module-38.png)
-
-- [Module-39: ER Diagram](https://i.ibb.co/VgG8RcZ/university-management-core-service-Page-1-drawio.png)
-
-- **You can generate an ERD with Prisma schema using the website: https://prismaliser.app/**
-- [API Documentation](https://documenter.getpostman.com/view/26694209/2s9Xy5NrFU)
-
+Category
+https://assignmeteight.vercel.app/api/v1/categories/create-category (POST)
+https://assignmeteight.vercel.app/api/v1/categories (GET)
+https://assignmeteight.vercel.app/api/v1/categories/6177a5b87d32123f08d2f5d4 (Single GET) Include an id that is saved in your database
+https://assignmeteight.vercel.app/api/v1/categories/6177a5b87d32123f08d2f5d4 (PATCH)
+https://assignmeteight.vercel.app/api/v1/categories/6177a5b87d32123f08d2f5d4 (DELETE) Include an id that is saved in your database
+Books
+https://assignmeteight.vercel.app/api/v1/books/create-book (POST)
+https://assignmeteight.vercel.app/api/v1/books (GET)
+https://assignmeteight.vercel.app/api/v1/books/:categoryId (GET)
+https://assignmeteight.vercel.app/api/v1/books/:id (GET)
+https://assignmeteight.vercel.app/api/v1/books/:id (PATCH)
+https://assignmeteight.vercel.app/api/v1/books/:id (DELETE)
+Orders
+https://assignmeteight.vercel.app/api/v1/orders/create-order (POST)
+https://assignmeteight.vercel.app/api/v1/orders (GET)
+https://assignmeteight.vercel.app/api/v1/orders/:orderId (GET)
