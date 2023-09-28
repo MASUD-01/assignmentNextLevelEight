@@ -1,5 +1,6 @@
 User
 https://assignmeteight.vercel.app/api/v1/auth/signup (POST)
+https://assignmeteight.vercel.app/api/v1/auth/signin (POST)
 https://assignmeteight.vercel.app/api/v1/users (GET)
 https://assignmeteight.vercel.app/api/v1/users/a2c5b944-1184-40c0-98c8-f8093f3a72c9 (Single GET) Include an id that is saved in your database
 https://assignmeteight.vercel.app/api/v1/users/a2c5b944-1184-40c0-98c8-f8093f3a72c9 (PATCH)
@@ -23,3 +24,10 @@ Orders
 https://assignmeteight.vercel.app/api/v1/orders/create-order (POST)
 https://assignmeteight.vercel.app/api/v1/orders (GET)
 https://assignmeteight.vercel.app/api/v1/orders/:orderId (GET)
+
+<!--deploy vercel
+*** project ta supabase e host kora using postgress and prisma***
+1. kono logger file thakle bad dibo, free te vercel access nai
+2. yarn build
+3. vercel --prod
+  -->

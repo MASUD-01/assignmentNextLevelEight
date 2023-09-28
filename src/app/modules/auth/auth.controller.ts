@@ -15,13 +15,14 @@ const insertAuth = catchAsync(async (req: Request, res: Response) => {
 });
 const login = catchAsync(async (req: Request, res: Response) => {
   const result = await AuthService.login(req.body);
-  const { refreshToken, ...others } = result;
+  const { refreshToken, accessToken } = result;
   res.cookie('refreshToken', refreshToken);
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
+
+  res.json({
     success: true,
+    statusCode: httpStatus.OK,
     message: 'User login successfully',
-    data: result,
+    token: accessToken,
   });
 });
 const refreshToken = catchAsync(async (req: Request, res: Response) => {
